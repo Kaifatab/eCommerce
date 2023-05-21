@@ -46,6 +46,16 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink to="/register" className="nav-link">
+                  Register
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/login" className="nav-link">
+                  Login
+                </NavLink>
+              </li>
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
@@ -54,6 +64,7 @@ const Header = () => {
                 >
                   Categories
                 </Link>
+
                 {/* <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to={"/categories"}>
