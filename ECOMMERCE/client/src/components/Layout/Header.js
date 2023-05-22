@@ -1,25 +1,25 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-// import { useAuth } from "../../context/auth";
-// import toast from "react-hot-toast";
+import { useAuth } from "../../context/auth";
+import toast from "react-hot-toast";
 // import SearchInput from "../Form/SearchInput";
 // import useCategory from "../../hooks/useCategory";
 // import { useCart } from "../../context/cart";
 // import { Badge } from "antd";
 
 const Header = () => {
-  // const [auth, setAuth] = useAuth();
+  const [auth, setAuth] = useAuth();
   // const [cart] = useCart();
   // const categories = useCategory();
-  // const handleLogout = () => {
-  //   setAuth({
-  //     ...auth,
-  //     user: null,
-  //     token: "",
-  //   });
-  //   localStorage.removeItem("auth");
-  //   toast.success("Logout Successfully");
-  // };
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast.success("Logout Successfully");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
@@ -46,16 +46,7 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/register" className="nav-link">
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link">
-                  Login
-                </NavLink>
-              </li>
+
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
@@ -84,7 +75,7 @@ const Header = () => {
                 </ul> */}
               </li>
 
-              {/* {!auth?.user ? (
+              {!auth?.user ? (
                 <>
                   <li className="nav-item">
                     <NavLink to="/register" className="nav-link">
@@ -99,7 +90,7 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <li className="nav-item dropdown">
+                  {/* <li className="nav-item dropdown">
                     <NavLink
                       className="nav-link dropdown-toggle"
                       href="#"
@@ -119,20 +110,20 @@ const Header = () => {
                         >
                           Dashboard
                         </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={handleLogout}
-                          to="/login"
-                          className="dropdown-item"
-                        >
-                          Logout
-                        </NavLink>
-                      </li>
-                    </ul>
+                      </li> */}
+                  <li>
+                    <NavLink
+                      onClick={handleLogout}
+                      to="/login"
+                      className="dropdown-item"
+                    >
+                      Logout
+                    </NavLink>
                   </li>
+                  {/* </ul>
+                  </li> */}
                 </>
-              )} */}
+              )}
               {/* <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
                   <Badge count={cart?.length} showZero offset={[10, -5]}>
