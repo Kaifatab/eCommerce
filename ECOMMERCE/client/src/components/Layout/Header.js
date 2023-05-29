@@ -3,14 +3,10 @@ import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 import SearchInput from "../Form/SearchInput";
-// import useCategory from "../../hooks/useCategory";
-// import { useCart } from "../../context/cart";
-// import { Badge } from "antd";
-
+import useCategory from "../../hooks/useCategory";
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  // const [cart] = useCart();
-  // const categories = useCategory();
+  const categories = useCategory();
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -22,7 +18,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -37,7 +33,7 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-              <h2>Lumière</h2>
+              🛒 Ecommerce App
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               {/* <SearchInput /> */}
@@ -46,7 +42,6 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
@@ -55,8 +50,7 @@ const Header = () => {
                 >
                   Categories
                 </Link>
-
-                {/* <ul className="dropdown-menu">
+                <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to={"/categories"}>
                       All Categories
@@ -72,7 +66,7 @@ const Header = () => {
                       </Link>
                     </li>
                   ))}
-                </ul> */}
+                </ul>
               </li>
 
               {!auth?.user ? (
@@ -124,13 +118,11 @@ const Header = () => {
                   </li>
                 </>
               )}
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
-                  <Badge count={cart?.length} showZero offset={[10, -5]}>
-                    Cart
-                  </Badge>
+                  Cart (0)
                 </NavLink>
-              </li> */}
+              </li>
             </ul>
           </div>
         </div>
