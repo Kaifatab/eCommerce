@@ -36,7 +36,7 @@ const Header = () => {
               🛒 Ecommerce App
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              {/* <SearchInput /> */}
+              <SearchInput />
               <li className="nav-item">
                 <NavLink to="/" className="nav-link ">
                   Home
