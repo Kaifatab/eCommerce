@@ -1,0 +1,27 @@
+.z10{
+    z-index: 10;
+}
+.z20{
+    z-index: 20;
+}
+.bg-sub1{
+    background-image: url('./image/sub1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ 
+.bg-sub2{
+    background-image: url('./image/sub2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mb5{
+    margin-bottom: 5% !important;
+    margin-top: 5% !important;
+}
+ 
+@media screen and (max-width: 850px) {
+    .landing__image__container{
+       display: none;
+    }
+}

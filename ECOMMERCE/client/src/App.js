@@ -22,12 +22,15 @@ import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import Search from "./pages/Search";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 function App() {
   return (
     <>
+    
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<LandingPage />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />
         <Route path="/categories" element={<Categories />} />
