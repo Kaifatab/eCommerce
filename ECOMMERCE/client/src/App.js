@@ -23,6 +23,7 @@ import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import Search from "./pages/Search";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
