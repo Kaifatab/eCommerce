@@ -1,5 +1,7 @@
 import React from "react";
-import Navigation from "../../components/Navigation/Navigation";
+import Subscription  from "../../components/Subscription/Subscription";
+import TopReviewed from "../../components/TopReviewed/TopReviewed";
+import TopSelling from "../../components/TopSelling/TopSelling";
 import banner1 from "./image/banner1.jpg";
 import banner2 from "./image/banner2.jpg";
 import banner11 from "./image/sub1.jpg";
@@ -9,8 +11,7 @@ import "./LandingPage.css";
 export default function LandingPage() {
   return (
     <>
-      <Navigation></Navigation>
-
+   
       {/* carosol componant */}
       <div
         id="carouselExampleCaptions"
@@ -120,7 +121,10 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-    <h1>loading....................</h1>
+    
+    <TopSelling/>
+    <TopReviewed/>
+    <Subscription/>
     </>
   );
 }

@@ -23,14 +23,18 @@ import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import Search from "./pages/Search";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import Checkout from "./pages/Checkout/Checkout";
+import Footer from "./components/Footer/Footer";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   return (
     <>
-    
+    <Navigation></Navigation>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<LandingPage />} />
+        <Route path="/checkout" element={<Checkout/>} />
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />
         <Route path="/categories" element={<Categories />} />
@@ -57,6 +61,7 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
       </Routes>
+      <Footer/>
     </>
   );
 }

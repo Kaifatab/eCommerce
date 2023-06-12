@@ -21,7 +21,7 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 
 export default function Navigation() {
   return (
-    <div className="shadow">
+    <>
       {/* offer div */}
       {/* <div className="bg-top d-flex">
         <p className="m-auto text-light text-14 animate__animated  animate__fadeInUp animate__slower	animate__infinite">
@@ -76,7 +76,8 @@ export default function Navigation() {
       </div>
 
       {/* title div */}
-      <div className="d-flex justify-content-between px115 sticky-top py-4">
+      <div className="sticky-top">
+      <div className="d-flex justify-content-between px115 bg-white py-4">
         <div className="text-start">
           <a
             href="/home"
@@ -127,12 +128,12 @@ export default function Navigation() {
           </div>
         </div>
       </div>
-      <div className="d-flex mx-auto bg-offwhite shadow ">
-        <Navbar expand="lg m-auto " className="my-0 py-0 border0">
+      <div className="d-flex mx-auto shadow bg-offwhite">
+        <Navbar expand="lg m-auto " className="my-0 py-0">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto gap-5 d-flex mx-auto position-relative border-0">
-              <Nav.Link href="/home" className="text-black text-nav  drop">
+            <Nav className="me-auto gap-5 d-flex mx-auto position-relative">
+              <Nav.Link href="/home" className="  drop  ">
                 HOME
               </Nav.Link>
 
@@ -254,6 +255,8 @@ export default function Navigation() {
           </Navbar.Collapse>
         </Navbar>
       </div>
-    </div>
+      </div>
+     
+    </>
   );
 }
