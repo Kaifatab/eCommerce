@@ -1,0 +1,53 @@
+hr{
+    border: 2px solid rgb(0, 0, 0,0);
+    width: 90%;
+    margin: auto;
+    z-index: 1;
+   
+}
+.ps-r{
+    position: relative;
+}
+.ps-a{
+    position: absolute;
+}
+
+.-mb{
+    margin-bottom: -20px;
+    z-index: 2;
+}
+.bg-wh{
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-gray{
+    background-color: #343a40;
+}
+.btn-gray{
+    background-color: #343a40;
+}
+.text-20{
+    font-size: 20px;
+}
+.text-12{
+    font-size: 12px;
+}
+.text-15{
+    font-size: 15px;
+}
+.text-16{
+    font-size: 16px;
+}
+.text-18{
+    font-size: 18px;
+}
+.text-theme-gray{
+    color: #666666;
+}
+
+.rounded-iconive{
+    border-radius: 8px;
+}
+.card-main{
+    width: 23% !important;
+}

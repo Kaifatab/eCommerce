@@ -1,0 +1,35 @@
+.bg-footer{
+    background-color: #F5F5F5;
+    
+}
+
+.bg-outline-white{
+    border: 1px solid white;
+}
+.w-30{
+    width: 33%;
+}
+.text-14{
+    font-size: 14px;
+    color: #a3a3a3 !important;
+    
+}
+.text-18{
+    font-size: 18px;
+   
+}
+
+.px90{
+    padding-left: 90px;
+}
+.containerpro{
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.bg-black{
+    background-color: #000000;
+    height: 50px;
+}
+.text-white-50{
+    color: #ffffff7a;
+}

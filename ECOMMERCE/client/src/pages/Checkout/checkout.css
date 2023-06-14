@@ -1,0 +1,67 @@
+.top-banner{
+   
+    background-image: url(./Image/bgbanner.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height:320px;
+    display: flex;
+    
+}
+.xyauto{
+    margin: auto auto;
+}
+.big-txt{
+   
+    font-size:50px;
+    font-weight: 600;
+}
+.bg-theme{
+    background-color:#145477;
+}
+.bb{
+    border-bottom: solid 1px white;
+}
+.bg-offwhite{
+    background-color:rgb(211, 226, 248);
+}
+.bbb{
+    border-bottom: solid 1px rgb(123, 115, 115);
+    
+}
+.mapview{
+    height:500px;
+    margin-bottom:445px;
+}
+.spanRed{
+    color:rgb(240, 0, 0);
+}
+.w-30{
+    width: 30%;
+}
+.w-s100{
+    width: 55px !important;
+    height: 50px !important;
+}
+.w-15{
+    width: 10%;
+}
+.w-85{
+    width: 90%;
+}
+.hc-50{
+    height: 40px;
+}
+.border-theme{
+    border: #666666a7 1px solid;
+}
+.btn-theme-check{
+    width: 176px;
+    height: 50px;
+    font-weight: 600;
+    background-color: #ECB30A;
+    border-radius: 8px;
+}
+.btn-theme{
+    background-color: #ECB30A;
+    color: white;
+}

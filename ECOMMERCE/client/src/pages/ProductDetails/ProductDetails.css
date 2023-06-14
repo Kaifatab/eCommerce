@@ -1,0 +1,61 @@
+.ps-a {
+  position: absolute;
+}
+
+.wm-22 {
+  width: 18%;
+}
+.marginLeft {
+  margin-left: 5%;
+}
+.me-nai {
+  margin-top: 5px !important;
+  margin-left: 97%;
+}
+.btn-add {
+  background: #ecb30a;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  color: aliceblue;
+}
+.outline-wish {
+  border: 1px solid #ecb30a;
+  border-radius: 8px;
+  color: #ecb30a;
+}
+.text-20 {
+  font-size: 20px;
+}
+.text-28 {
+  font-size: 28px;
+}
+.text-15 {
+  font-size: 15px;
+}
+.text-18 {
+  font-size: 18px;
+}
+.text-22 {
+  font-size: 22px;
+}
+.text-theme-gray {
+  color: #666666;
+}
+.mt-100 {
+  margin-top: 50px;
+}
+.px120 {
+  padding: 0px 120px;
+}
+.rounded-6 {
+  border-radius: 6px !important;
+}
+
+.btn-dark {
+  background-color: #666666 !important;
+  border: #373737 1px solid !important;
+  color: #ffffff !important;
+}
+.btn-lightpro {
+  border: #1e1e1e 2 px solid !important;
+}
