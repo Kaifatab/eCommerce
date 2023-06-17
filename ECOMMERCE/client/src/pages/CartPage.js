@@ -14,7 +14,7 @@ const CartPage = () => {
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+console.log(cart)
   //total price
   const totalPrice = () => {
     try {
@@ -82,37 +82,37 @@ const CartPage = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
+            <h3 className="text-center text-info p-2 pt-5 mb-1">
               {`Hello ${auth?.token && auth?.user?.name}`}
-            </h1>
-            <h4 className="text-center">
+            </h3>
+            <h5 className="text-center text-secondary">
               {cart?.length
                 ? `You Have ${cart.length} items in your cart ${
                     auth?.token ? "" : "please login to checkout"
                   }`
                 : " Your Cart Is Empty"}
-            </h4>
+            </h5>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-8">
+        <div className="row pt-5">
+          <div className="col-md-8 ">
             {cart?.map((p) => (
-              <div className="row mb-2 p-3 card flex-row" key={p._id}>
-                <div className="col-md-4">
+              <div className="row mb-4 p-3 border border-1 border-secondry rounded-1 flex-row" key={p._id}>
+                <div className="col-md-4 border-end ">
                   <img
                     src={`/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                     width="100px"
-                    height={"100px"}
+                   
                   />
                 </div>
-                <div className="col-md-8">
-                  <p>{p.name}</p>
-                  <p>{p.description.substring(0, 30)}</p>
-                  <p>Price : {p.price}</p>
+                <div className="col-md-8 my-auto ps-4">
+                  <p className="fs-4 pb-0 mb-0">{p.name}</p>
+                  <p className="text-14 text-secondary pt-1">{p.description.substring(0, 30)}</p>
+                  <p className="fs-5 text-dark">Price : ${p.price}</p>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-outline-danger rounded-1 py-1  "
                     onClick={() => removeCartItem(p._id)}
                   >
                     Remove
@@ -121,18 +121,18 @@ const CartPage = () => {
               </div>
             ))}
           </div>
-          <div className="col-md-4 text-center">
-            <h2>Cart Summary</h2>
-            <p>Total | Checkout | Payment</p>
-            <hr />
+          <div className="col-md-4 text-center px-4">
+            <h5 className="py-3 bg-dark text-light mb-3 ">Cart Summary</h5>
+            <p className="text-secondary border-bottom pb-3 text-16">Total | Checkout | Payment</p>
+           
             <h4>Total : {totalPrice()} </h4>
             {auth?.user?.address ? (
               <>
                 <div className="mb-3">
-                  <h4>Current Address</h4>
-                  <h5>{auth?.user?.address}</h5>
+                  <h5 className="py-3 bg-dark text-light mt-5">Current Address</h5>
+                  <h5 className="text-secondary my-4 text-16">Email : {auth?.user?.address}</h5>
                   <button
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-info rounded-1 px-4 mb-5"
                     onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Address
@@ -143,14 +143,14 @@ const CartPage = () => {
               <div className="mb-3">
                 {auth?.token ? (
                   <button
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-info rounded-1 px-4"
                     onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Address
                   </button>
                 ) : (
                   <button
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-warning px-4 rounded-1"
                     onClick={() =>
                       navigate("/login", {
                         state: "/cart",

@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import "./Navigation.css";
-import { Badge } from "@mui/material";
+import { Badge } from "antd";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -12,14 +12,28 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import profile from "./image/profile.svg";
-import search from "./image/search.svg";
-import wish from "./image/wishj.svg";
-import cart from "./image/cart.svg";
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import { NavLink, Link } from "react-router-dom";
+import { useAuth } from "../../context/auth";
+import toast from "react-hot-toast";
+import SearchInput from "../Form/SearchInput";
+import useCategory from "../../hooks/useCategory";
+import { useCart } from "../../context/cart";
 
 export default function Navigation() {
+  const [auth, setAuth] = useAuth();
+  const [cart] = useCart();
+  const categories = useCategory();
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast.success("Logout Successfully");
+  };
   return (
     <>
       {/* offer div */}
@@ -32,7 +46,9 @@ export default function Navigation() {
       <div className="bg-dark d-flex justify-content-between border-bottom px115">
         <div className="my-auto text-light d-flex py-2">
           <MailOutlineIcon className="text-light me-1 my-auto" />
-          <p className="text-14 navtxt my-auto text-theme-gray ">support.infinity@gmail.com</p>
+          <p className="text-14 navtxt my-auto text-theme-gray ">
+            support.infinity@gmail.com
+          </p>
         </div>
         <div className=" text-light d-flex gap-2">
           <a
@@ -77,17 +93,17 @@ export default function Navigation() {
 
       {/* title div */}
       <div className="sticky-top">
-      <div className="d-flex justify-content-between px115 bg-white py-4">
-        <div className="text-start">
-          <a
-            href="/home"
-            className="text-decoration-none text-start text-black my-auto"
-          >
-            <h2 className="fw-bold ps-1 my-auto text44">INFINITY</h2>
-          </a>
-        </div>
-        <div className="my-auto w-50 ">
-          <form class="d-flex">
+        <div className="d-flex justify-content-between px115 bg-white py-4">
+          <div className="text-start">
+            <a
+              href="/"
+              className="text-decoration-none text-start text-black my-auto"
+            >
+              <h2 className="fw-bold ps-1 my-auto text44">INFINITY</h2>
+            </a>
+          </div>
+          <div className="my-auto w-50 ">
+            {/* <form class="d-flex">
             <input
               class="form-control rounded-end-0 w-100 "
               type="search"
@@ -97,43 +113,41 @@ export default function Navigation() {
             <button class="btn btn-secondary rounded-start-0" type="submit">
               Search
             </button>
-          </form>
-        </div>
+          </form> */}
+            <SearchInput />
+          </div>
 
-        <div className="d-flex  my-auto gap-3">
-          {/* <div className="m-auto  ">
+          <div className="d-flex  my-auto gap-3">
+            {/* <div className="m-auto  ">
             <img src={search} alt="this is an icon" />
           </div> */}
-          <div className="m-auto ">
-            <FavoriteBorderOutlinedIcon  className="fs-2 scale13 text-dark pt-1 "/>
-          </div>
-          <div className="m-auto">
-            <a href="/checkout">
-              <Badge
-                //    badgeContent={cartItems}
-                color="primary"
-              >
-                <LocalMallOutlinedIcon  className="fs-1 text-dark "/>
+            <div className="m-auto ">
+              <FavoriteBorderOutlinedIcon className="fs-2 scale13 text-dark pt-1 " />
+            </div>
+            <div className="m-auto">
+              <Badge className="mt-1" count={cart?.length} showZero>
+                <Link to="/cart" className="nav-link text-18 my-auto">
+                  <LocalMallOutlinedIcon className="fs-1 text-dark " />
+                </Link>
               </Badge>
-            </a>
-          </div>
-          <div className="m-auto">
-            <a href="/profile">
-              <img
-                src={profile}
-                className="shadow-lg rounded-circle"
-                alt="this is an icon"
-              />
-            </a>
+            </div>
+            <div className="m-auto">
+              <a href="/profile">
+                <img
+                  src={profile}
+                  className="shadow-lg rounded-circle"
+                  alt="this is an icon"
+                />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="d-flex mx-auto shadow bg-offwhite">
-        <Navbar expand="lg m-auto " className="my-0 py-0">
+        <div className="d-flex mx-auto  bg-light shadow">
+          {/* <Navbar expand="lg  " className="m-auto py-0  borderBottom">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto gap-5 d-flex mx-auto position-relative">
-              <Nav.Link href="/home" className="  drop  ">
+          <Navbar.Collapse id="basic-navbar-nav ">
+            <Nav className="me-auto gap-5 d-flex mx-auto ">
+              <Nav.Link href="/" className="  drop  ">
                 HOME
               </Nav.Link>
 
@@ -232,7 +246,7 @@ export default function Navigation() {
                   </div>
                 )} */}
 
-              <Nav.Link href="#home" className="text-black drop text-nav">
+          {/* <Nav.Link href="#home" className="text-black drop text-nav">
                MAN
               </Nav.Link>
 
@@ -253,10 +267,124 @@ export default function Navigation() {
              
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> */}
+          <nav className="m-auto py-0 navbar navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid">
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+              <div
+                className="collapse navbar-collapse"
+                id="navbarTogglerDemo01"
+              >
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4">
+                  <li className="nav-item">
+                    <NavLink to="/" className="nav-link ">
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/shop" className="nav-link ">
+                      Shop
+                    </NavLink>
+                  </li>
+                  <li className="nav-item dropdown">
+                    <Link
+                      className="nav-link dropdown-toggle"
+                      to={"/categories"}
+                      data-bs-toggle="dropdown"
+                    >
+                      Categories
+                    </Link>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <Link className="dropdown-item" to={"/categories"}>
+                          All Categories
+                        </Link>
+                      </li>
+                      {categories?.map((c) => (
+                        <li>
+                          <Link
+                            className="dropdown-item"
+                            to={`/category/${c.slug}`}
+                          >
+                            {c.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+
+                  {!auth?.user ? (
+                    <>
+                      <li className="nav-item">
+                        <NavLink to="/register" className="nav-link">
+                          Register
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink to="/login" className="nav-link">
+                          Login
+                        </NavLink>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li className="nav-item dropdown">
+                        <NavLink
+                          className="nav-link dropdown-toggle"
+                          href="#"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          style={{ border: "none" }}
+                        >
+                          {auth?.user?.name}
+                        </NavLink>
+                        <ul className="dropdown-menu">
+                          <li>
+                            <NavLink
+                              to={`/dashboard/${
+                                auth?.user?.role === 1 ? "admin" : "user"
+                              }`}
+                              className="dropdown-item"
+                            >
+                              Dashboard
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              onClick={handleLogout}
+                              to="/login"
+                              className="dropdown-item"
+                            >
+                              Logout
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </li>
+                    </>
+                  )}
+                  {/* <li className="nav-item">
+                    <Badge className="mt-1" count={cart?.length} showZero>
+                      <NavLink to="/cart" className="nav-link text-18 my-auto">
+                        Cart
+                      </NavLink>
+                    </Badge>
+                  </li> */}
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
-      </div>
-     
     </>
   );
 }

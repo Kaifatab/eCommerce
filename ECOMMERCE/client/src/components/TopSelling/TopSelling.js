@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import "./TopSelling.css";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import card1 from "./card/e3.png";
 import cardicon1 from "./card/cardicon1.svg";
 import best from "./card/best-seller.png";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export default function TopSelling() {
   const cards = [

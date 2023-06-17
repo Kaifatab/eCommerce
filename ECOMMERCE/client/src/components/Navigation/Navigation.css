@@ -1,7 +1,5 @@
 
-  .text-black {
-    color: black !important;
-  }
+  
   .z-100 {
     z-index: 100;
   }
@@ -10,8 +8,7 @@
   }
   .drop:hover {
     font-weight: 600 !important;
-    transition: all 0.5s;
-    border-bottom: #363636 1px solid;
+   
   }
   
 
@@ -31,19 +28,15 @@
   .text-18 {
     font-size: 18px;
   }
-  .text-theme-gray {
-    color: #ffffff !important;
-  }
+ 
   .mt-100 {
     margin-top: 50px;
   }
-  .text-nav {
+  /* .text-nav {
     font-size: 0.8vw;
     border-bottom: #ffffff solid 2px;
   }
-  .bg-wholeslae {
-    background-color: #f9f5f0e9;
-  }
+   */
  
   
   .px115 {
@@ -57,10 +50,7 @@
     font-size: 2.1vw;
    
   }
-  .bg-top {
-    background-color: #363636;
-    height: 45px;
-  }
+ 
   .sticky-top {
     position: sticky;
     top: 0;
@@ -86,8 +76,4 @@
   .text54{
     font-size: 65px;
   }
-
-.bg-offwhite{
-    background-color: #f6f6f6 !important;
-}
 
