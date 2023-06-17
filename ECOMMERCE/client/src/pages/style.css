@@ -73,3 +73,17 @@ hr{
 .text-white{
     color: #ffffff !important;
 }
+
+.top-banner{
+   
+    background-image: url("../../public/images/login/moonbg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height:430px;
+    display: flex;
+    margin-top: -40px;
+    
+}
+.xyauto{
+    margin: auto auto;
+}

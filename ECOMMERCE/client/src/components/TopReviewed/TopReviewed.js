@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
+import { useNavigation } from "react-router-dom";
 import "./TopReviewed.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import card1 from "./card/e1.png";
@@ -7,8 +8,10 @@ import cardicon1 from "./card/cardicon1.svg";
 import review from "./card/medal.png";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useNavigate } from "react-router-dom";
 
 export default function TopReviewed() {
+  const navigation=useNavigate()
   const cards = [
     {
       id: 1,
@@ -101,7 +104,13 @@ export default function TopReviewed() {
           ))}
         </div>
         <div className="my-5 d-flex flex-column text-center">
-          <button className="btn text-dark text-18">View Shop</button>
+          <button
+           onClick={
+            ()=>{
+              navigation('/shop')
+            }
+          }
+          className="btn text-dark text-18">View Shop</button>
           <KeyboardArrowDownIcon className="text-dark m-auto mb-md-5" />
         </div>
       </div>

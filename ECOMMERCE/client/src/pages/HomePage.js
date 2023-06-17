@@ -111,17 +111,23 @@ const HomePage = () => {
   };
   return (
     <Layout title={"ALl Products - Best offers "}>
+       <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">Products</h3>
+            <p className="text-secondary">Home / Products</p>
+          </div>
+        </div>
       <div className="container-fluid row mt-2 px-5 d-flex">
         <div className="col-md-2 mt-5p mb-5 p-4 rounded-0 bg-light border ">
           <h4 className="text-start fs-5 fw-bold pt-3">Filter By Category</h4>
           <div className="d-flex flex-column gap-1 pt-3">
             {categories?.map((c) => (
               <Checkbox
-               className="text-secondary"
+               className="text-secondary my-auto"
                 key={c._id}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
-               <p className="cate-hover"> {c.name}</p>
+               <p className="cate-hover my-auto"> {c.name}</p>
               </Checkbox>
             ))}
           </div>
@@ -146,7 +152,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="col-md-9 offset-1">
-          <h4 className="text-center py-4 fw-bold">All Products</h4>
+          <h6 className="text-start py-4 fw-bold">All Products</h6>
           <div className="d-flex flex-wrap row gap-2">
             {products?.map((p) => (
               // <div className="card m-2" style={{ width: "18rem" }} key={p._id}>

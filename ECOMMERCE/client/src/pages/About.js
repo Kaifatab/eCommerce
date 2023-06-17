@@ -1,9 +1,15 @@
 import React from "react";
 import Layout from "./../components/Layout/Layout";
-
+import './style.css'
 const About = () => {
   return (
     <Layout title={"About us - Ecommer app"}>
+        <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">About Us</h3>
+            <p className="text-secondary">Home / About Us</p>
+          </div>
+        </div>
       <div className="row  w-100 container mx-auto mt-5p">
         <div className="w-50 mt-5">
           <img

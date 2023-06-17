@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import './style.css'
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -79,7 +80,14 @@ console.log(cart)
 
   return (
     <Layout>
+       <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">Checkout</h3>
+            <p className="text-secondary">Home / Checkout</p>
+          </div>
+        </div>
       <div className="container">
+     
         <div className="row">
           <div className="col-md-12">
             <h3 className="text-center text-info p-2 pt-5 mb-1">

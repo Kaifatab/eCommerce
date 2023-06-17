@@ -44,11 +44,16 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-     
-      <div className="conntaienr  w-100 container dashboard  mx-auto">
-      <div className="text-center mx-auto text-secondary mb-3"><h2 className="text-center">PRODUCT DETAILS</h2>
-      </div>
-       <div className="d-flex mt-5">
+      
+      <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">Product Details</h3>
+            <p className="text-secondary">Home / Product details</p>
+          </div>
+        </div>
+      <div className="conntaienr  w-100 container mt-4  mx-auto">
+    
+       <div className="d-flex ">
        <div className="col-md-6 w-50 p-4 border">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
@@ -61,9 +66,8 @@ const ProductDetails = () => {
           
           <p className="fs-3 mb-0 pb-0  ">{product.name}</p>
           <p className="text-secondary pb-3 text-14">Origin: Made by japan</p>
-          <p className="fs-3 text-danger mt-3">Price : ${product.price}</p>
+          <p className="fs-3 text-info mt-3">Price : ${product.price}</p>
           <p className="text-secondary mt-3">Description : {product.description}</p>
-         
           <p className="text-secondary mb-3 pt-0">Category : {product?.category?.name}</p>
           <p className="mt-3 my-auto d-flex">
               
@@ -81,8 +85,8 @@ const ProductDetails = () => {
               </p>
             </p>
          <div className="d-flex gap-3 mt-5">
-         <button class="btn btn-dark rounded-1 w-50 ms-1 py-2">ADD TO CART</button>
-         <button class="btn btn-outline-info rounded-1 w-50 ms-1 py-2">Add to wish list</button>
+         <button class="btn btn-dark rounded-0 w-50 ms-1 py-2">ADD TO CART</button>
+         <button class="btn btn-outline-info rounded-0 w-50 ms-1 py-2">Add to wish list</button>
          </div>
         </div>
        </div>

@@ -1,9 +1,16 @@
 import React from "react";
 import Layout from "./../components/Layout/Layout";
 import { BiMailSend, BiPhoneCall, BiSupport } from "react-icons/bi";
+import  './style.css'
 const Contact = () => {
   return (
     <Layout title={"Contact us"}>
+      <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">Contact Us</h3>
+            <p className="text-secondary">Home / Contact Us</p>
+          </div>
+        </div>
       <div className="row container mx-auto mt-5p">
         <div className="col-md-6 mt-5">
           <img
