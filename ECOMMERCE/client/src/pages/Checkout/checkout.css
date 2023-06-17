@@ -1,12 +1,4 @@
-.top-banner{
-   
-    background-image: url(./Image/bgbanner.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height:320px;
-    display: flex;
-    
-}
+
 .xyauto{
     margin: auto auto;
 }

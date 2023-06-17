@@ -7,12 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 const Layout = ({ children }) => {
   return (
     <div>
-      <Header />
+     
       <main style={{ minHeight: "82vh" }}>
         <Toaster />
         {children}
       </main>
-      <Footer />
+     
     </div>
   );
 };

@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from "react";
 import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
-
+import './stylelog.css'
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -41,15 +42,21 @@ const Register = () => {
 
   return (
     <Layout>
-      <div className="form-container mt-5 p-5" style={{ minHeight: "90vh" }}>
-        <form onSubmit={handleSubmit}>
-          <h4 className="title">REGISTER FORM</h4>
+     
+      <div className="w-100 d-flex container mt-100 shadow p-0 mx-auto">
+      <div className="w-50 ">
+          <img src="./images/login/pc.jpg" className="w-100 h-100" alt="this is an image"/>
+        </div>
+        <div className="w-50 d-flex px-10p">
+        <form onSubmit={handleSubmit} className="w-100 text-center">
+          <h4 className="title text-center fw-bold">REGISTER</h4>
+          <p className="text-secondary pb-4"> <small >Register and buy our classy products</small> </p>
           <div className="mb-3">
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="form-control"
+              className="form-control w-100 py-2 text-14 rounded-0 text-secondary"
               id="exampleInputEmail1"
               placeholder="Enter Your Name"
               required
@@ -61,7 +68,7 @@ const Register = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
+              className="form-control w-100  text-14 rounded-0 text-secondary"
               id="exampleInputEmail1"
               placeholder="Enter Your Email "
               required
@@ -72,7 +79,7 @@ const Register = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="form-control"
+              className="form-control w-100  text-14 rounded-0 text-secondary"
               id="exampleInputPassword1"
               placeholder="Enter Your Password"
               required
@@ -83,7 +90,7 @@ const Register = () => {
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="form-control"
+              className="form-control w-100  text-14 rounded-0 text-secondary"
               id="exampleInputEmail1"
               placeholder="Enter Your Phone"
               required
@@ -94,7 +101,7 @@ const Register = () => {
               type="text"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="form-control"
+              className="form-control w-100  text-14 rounded-0 text-secondary"
               id="exampleInputEmail1"
               placeholder="Enter Your Address"
               required
@@ -105,16 +112,18 @@ const Register = () => {
               type="text"
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
-              className="form-control"
+              className="form-control w-100  text-14 rounded-0 text-secondary"
               id="exampleInputEmail1"
               placeholder="Enter a secret key"
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark rounded-0 py-2 mt-3 w-50 mx-auto">
             REGISTER
           </button>
         </form>
+        </div>
+       
       </div>
     </Layout>
   );

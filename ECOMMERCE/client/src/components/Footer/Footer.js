@@ -41,7 +41,7 @@ export default function Footer() {
           
         </div>
         <div className="w-30 d-flex flex-column my-auto text-center">
-          <h3 className="text-theme-gray fw-bold ">INFINITY</h3>
+          <h3 className="text-light fw-bold ">INFINITY</h3>
           <div className="mt-4 text-dark d-flex gap-2 mx-auto">
             <a
               className="mx-1"
@@ -94,9 +94,11 @@ export default function Footer() {
         <div className="w-30 px90 d-flex border-start border-secondary gap-5">
           <div className="text-start pe-4">
           <h6 className="fw-bold text-light pb-3 text-18">Our Policies</h6>
-          <p className="text-14 text-light">Privacy Policy</p>
-          <p className="text-14 text-light">Terms & Conditions</p>
-          <p className="text-14 text-light">Shipping Policy</p>
+          <p className="text-14 text-light"><a href="#" className="text-decoration-none text-gray">Privacy Policy</a></p>
+          <p className="text-14 text-light"><a href="#" className="text-decoration-none text-gray">Terms & Conditions</a></p>
+      
+          <p className="text-14 text-light"><a href="/about" className="text-decoration-none text-gray">About Us</a></p>
+          <p className="text-14 text-light"><a href="/contact" className="text-decoration-none text-gray">Contact Us</a></p>
           </div>
           <div className="text-start">
           <h6 className="fw-bold text-18 text-light pb-3">Our Profile</h6>

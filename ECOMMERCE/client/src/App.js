@@ -34,8 +34,8 @@ function App() {
     <>
       <Navigation></Navigation>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<LandingPage />} />
+        <Route path="/shop" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />

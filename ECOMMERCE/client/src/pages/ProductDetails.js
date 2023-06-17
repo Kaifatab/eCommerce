@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
+import './style.css'
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useParams, useNavigate } from "react-router-dom";
 const ProductDetails = () => {
   const params = useParams();
@@ -37,50 +44,92 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-      <div className="row container dashboard mt-3 m-3 p-3">
-        <div className="col-md-4">
+      
+      <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">Product Details</h3>
+            <p className="text-secondary">Home / Product details</p>
+          </div>
+        </div>
+      <div className="conntaienr  w-100 container mt-4  mx-auto">
+    
+       <div className="d-flex ">
+       <div className="col-md-6 w-50 p-4 border">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
-            className="card-img-top"
+            className="w-100 h-100"
             alt={product.name}
-            height="300"
-            width={"100px"}
+            
           />
         </div>
-        <div className="col-md-8 ">
-          <h1 className="text-center">Product Details</h1>
-          <h6>Name : {product.name}</h6>
-          <h6>Description : {product.description}</h6>
-          <h6>Price : {product.price}</h6>
-          <h6>Category : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1">ADD TO CART</button>
+        <div className="col-md-6 w-50 p-4 ps-5 my-5">
+          
+          <p className="fs-3 mb-0 pb-0  ">{product.name}</p>
+          <p className="text-secondary pb-3 text-14">Origin: Made by japan</p>
+          <p className="fs-3 text-info mt-3">Price : ${product.price}</p>
+          <p className="text-secondary mt-3">Description : {product.description}</p>
+          <p className="text-secondary mb-3 pt-0">Category : {product?.category?.name}</p>
+          <p className="mt-3 my-auto d-flex">
+              
+              <p className="text-secondary my-auto">
+                Delivery Time:
+                <span className="text-dark fw-bold ps-2">
+                  3-7 business days
+                </span>
+              </p>
+            </p>
+            <p className="pt-3">
+              <p className="text-secondary">
+                {" "}
+               Terms and conditions applied
+              </p>
+            </p>
+         <div className="d-flex gap-3 mt-5">
+         <button class="btn btn-dark rounded-0 w-50 ms-1 py-2">ADD TO CART</button>
+         <button class="btn btn-outline-info rounded-0 w-50 ms-1 py-2">Add to wish list</button>
+         </div>
         </div>
+       </div>
       </div>
       <hr />
-      <div className="row container">
-        <h6>Similar Products</h6>
+      <div className="row container mx-auto mt-5">
+        <h5 className=" ms-2 fw-bold border-bottom pb-3">Similar Products</h5>
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}
-        <div className="d-flex flex-wrap">
+        <div className="d-flex flex-wrap mb-5">
           {relatedProducts?.map((p) => (
-            <div className="card m-2" style={{ width: "18rem" }}>
+            <div className="w-25 m-4" style={{ width: "18rem" }}>
               <img
                 src={`/api/v1/product/product-photo/${p?._id}`}
-                className="card-img-top"
+                className=" border w-100"
                 alt={p.name}
               />
-              <div className="card-body">
-                <h5 className="card-title">{p.name}</h5>
-                <p className="card-text">{p.description.substring(0, 30)}...</p>
-                <p className="card-text"> $ {p.price}</p>
-                <button
-                  className="btn btn-primary ms-1"
+              <div className="card-body p-3">
+                <h5 className="card-title ">{p.name}</h5>
+                <p className="card-text mt-2 text-secondary ">{p.description.substring(0, 25)}...</p>
+                <div className="d-flex justify-content-between mt-2">
+                   <button className="btn px-0 mt-1">
+                     <FavoriteBorderIcon className="fs-3 fw-normal text-danger" />
+                   </button>
+                   <p className="text-20 fw-bold text-dark my-auto pt-1">$ {p.price}</p>
+                   <button
+                    
+                   className="btn ps-2 my-auto text-warning">
+                     
+                     <LocalMallIcon
+                     />
+                   </button>
+                 </div>
+               <div className="d-flex w-100 text-light gap-2">
+               <button
+                  className="btn btn-dark w-50  text-white"
                   onClick={() => navigate(`/product/${p.slug}`)}
                 >
                   More Details
                 </button>
-                <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                <button class="btn btn-secondary w-50 text-white">ADD TO CART</button>
+               </div>
               </div>
             </div>
           ))}

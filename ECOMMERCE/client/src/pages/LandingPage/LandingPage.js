@@ -1,4 +1,5 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import Subscription  from "../../components/Subscription/Subscription";
 import TopReviewed from "../../components/TopReviewed/TopReviewed";
 import TopSelling from "../../components/TopSelling/TopSelling";
@@ -9,6 +10,7 @@ import banner22 from "./image/sub2.jpg";
 import "./LandingPage.css";
 
 export default function LandingPage() {
+  const navigation=useNavigate()
   return (
     <>
    
@@ -50,7 +52,13 @@ export default function LandingPage() {
                   Checkout The Best <br /> Fashion Style
                 </h1>
                 <a href="/shop">
-                  <button className="btn btn-outline-light px-5 py-2">
+                  <button 
+                   onClick={
+                    ()=>{
+                      navigation('/shop')
+                    }
+                  }
+                  className="btn btn-outline-light px-5 py-2">
                     SHOP NOW
                   </button>
                 </a>
@@ -66,7 +74,13 @@ export default function LandingPage() {
                   Checkout The Best <br /> Fashion Style
                 </h1>
                 <a href="/shop">
-                  <button className="btn btn-dark px-5 py-2">SHOP NOW</button>
+                  <button 
+                  onClick={
+                    ()=>{
+                      navigation('/shop')
+                    }
+                  }
+                  className="btn btn-dark px-5 py-2">SHOP NOW</button>
                 </a>
               </div>
             </div>
@@ -80,7 +94,13 @@ export default function LandingPage() {
                   Checkout The Best <br /> Fashion Style
                 </h1>
                 <a href="/shop">
-                  <button className="btn btn-dark px-5 py-2">SHOP NOW</button>
+                  <button
+                   onClick={
+                    ()=>{
+                      navigation('/shop')
+                    }
+                  }
+                  className="btn btn-dark px-5 py-2">SHOP NOW</button>
                 </a>
               </div>
             </div>

@@ -196,7 +196,7 @@ export default function Checkout(props) {
         {/* top image */}
         <div className="top-banner ">
           <div className="xyauto text-center">
-            <h3 className="big-txt text-light">Checkout</h3>
+            <h3 className="big-txt text-light mt-5">Checkout</h3>
             <p className="text-secondary">Home / Checkout</p>
           </div>
         </div>
