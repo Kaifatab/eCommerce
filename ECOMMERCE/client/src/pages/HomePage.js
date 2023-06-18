@@ -123,7 +123,7 @@ const HomePage = () => {
           <div className="d-flex flex-column gap-1 pt-3">
             {categories?.map((c) => (
               <Checkbox
-               className="text-secondary my-auto"
+               className="text-secondary my-auto pb-2"
                 key={c._id}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
@@ -223,7 +223,7 @@ const HomePage = () => {
                  {p.name}
                  </p>
                  <p className="m-0 py-0 text-12 text-dark">
-                 {p.description.substring(0, 40)}...
+                 {p.description.substring(0, 35)}...
                  </p>
                  <div className="d-flex justify-content-between mt-2">
                    <button className="btn px-0 mt-1">

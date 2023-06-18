@@ -87,51 +87,57 @@ const CreateCategory = () => {
   };
   return (
     <Layout>
-      <div className="container-fluid dashboard m-3 p-3">
+      <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">Create Category</h3>
+            <p className="text-secondary">Home / Create Category</p>
+          </div>
+        </div>
+      <div className="container-fluid dashboard m-3 px-5">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
-            <h1>Manage Category</h1>
-            <div className="p-3 w-50">
+          <div className="col-md-7 px-5 mx-auto">
+            <h4 className="fw-bold">Manage Category</h4>
+            <div className=" w-50">
               <CategoryForm
                 handleSubmit={handleSubmit}
                 value={name}
                 setValue={setName}
               />
             </div>
-            <div className="w-75">
+            <div className="w-75 my-5">
               <table className="table">
-                <thead>
+                <thead className="bg-dark text-light py-2" >
                   <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Actions</th>
+                    <td className="ps-4" scope="col  ">Name</td>
+                    <td className=" text-center" scope="col">Actions</td>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="border">
                   {categories?.map((c) => (
                     <>
-                      <tr>
-                        <td key={c._id}>{c.name}</td>
-                        <td>
+                      <tr >
+                        <td key={c._id} className="text-14 p-3">{c.name}</td>
+                        <td className="border-start text-center">
                           <button
-                            className="btn btn-primary ms-2"
+                            className="btn btn-info rounded-0 px-3 ms-2"
                             onClick={() => {
                               setVisible(true);
                               setUpdatedName(c.name);
                               setSelected(c);
                             }}
                           >
-                            Edit
+                            <small>Edit</small>
                           </button>
                           <button
-                            className="btn btn-danger ms-2"
+                            className="btn btn-danger ms-2 px-3 rounded-0"
                             onClick={() => {
                               handleDelete(c._id);
                             }}
                           >
-                            Delete
+                           <small> Delete</small>
                           </button>
                         </td>
                       </tr>

@@ -131,7 +131,7 @@ export default function Navigation() {
                 </Link>
               </Badge>
             </div>
-            <div className="m-auto">
+            {/* <div className="m-auto">
               <a href="/profile">
                 <img
                   src={profile}
@@ -139,7 +139,7 @@ export default function Navigation() {
                   alt="this is an icon"
                 />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="d-flex mx-auto  bg-light shadow">
