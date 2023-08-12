@@ -121,9 +121,9 @@ export default function Navigation() {
             {/* <div className="m-auto  ">
             <img src={search} alt="this is an icon" />
           </div> */}
-            <div className="m-auto ">
+            {/* <div className="m-auto ">
               <FavoriteBorderOutlinedIcon className="fs-2 scale13 text-dark pt-1 " />
-            </div>
+            </div> */}
             <div className="m-auto">
               <Badge className="mt-1" count={cart?.length} showZero>
                 <Link to="/cart" className="nav-link text-18 my-auto">
