@@ -123,7 +123,9 @@ const HomePage = () => {
           <div className="d-flex flex-column gap-1 pt-3">
             {categories?.map((c) => (
               <Checkbox
-                className="text-secondary my-auto"
+
+               className="text-secondary my-auto pb-2"
+
                 key={c._id}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
@@ -223,46 +225,47 @@ const HomePage = () => {
                    <ShoppingCartIcon className="pe-1 my-auto" />{" "}
                    <p className="m-auto"> Details</p>
                  </button> */}
-                </div>
-                <div className="text-start p-3">
-                  <p className=" fw-bold text-16 text-dark">{p.name}</p>
-                  <p className="m-0 py-0 text-12 text-dark">
-                    {p.description.substring(0, 40)}...
-                  </p>
-                  <div className="d-flex justify-content-between mt-2">
-                    <button className="btn px-0 mt-1">
-                      <FavoriteBorderIcon className="fs-3 fw-normal text-danger" />
-                    </button>
-                    <p className="text-20 fw-bold text-dark my-auto pt-1">
-                      $ {p.price}
-                    </p>
-                    <button className="btn ps-2 my-auto text-warning">
-                      <LocalMallIcon />
-                    </button>
-                  </div>
-                  <div className="d-flex justify-content-between w-100">
-                    <button
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                      className="btn btn-dark w-50 py-1 rounded-1"
-                    >
-                      Details
-                    </button>
-                    <button
-                      onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success("Item Added to cart");
-                      }}
-                      className="btn btn-outline-dark w-50 rounded-1"
-                    >
-                      Add Cart
-                    </button>
-                  </div>
-                </div>
-              </div>
+
+               </div>
+               <div className="text-start p-3">
+                 <p className=" fw-bold text-16 text-dark">
+                 {p.name}
+                 </p>
+                 <p className="m-0 py-0 text-12 text-dark">
+                 {p.description.substring(0, 35)}...
+                 </p>
+                 <div className="d-flex justify-content-between mt-2">
+                   <button className="btn px-0 mt-1">
+                     <FavoriteBorderIcon className="fs-3 fw-normal text-danger" />
+                   </button>
+                   <p className="text-20 fw-bold text-dark my-auto pt-1">$ {p.price}</p>
+                   <button
+                    
+                   className="btn ps-2 my-auto text-warning">
+                     
+                     <LocalMallIcon
+                     />
+                   </button>
+                 </div>
+                 <div className="d-flex justify-content-between w-100">
+                  <button 
+                   onClick={() => navigate(`/product/${p.slug}`)}
+                   className="btn btn-dark w-50 py-1 rounded-1">Details</button>
+                  <button
+                   onClick={() => {
+                            setCart([...cart, p]);
+                           localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, p])
+                            );
+                            toast.success("Item Added to cart");
+                          }}
+                  className="btn btn-outline-dark w-50 rounded-1">Add Cart</button>
+                 </div>
+               </div>
+             </div>
+              
+
             ))}
           </div>
           <div className="m-2 p-3">

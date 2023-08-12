@@ -64,20 +64,26 @@ const CreateProduct = () => {
 
   return (
     <Layout>
-      <div className="container-fluid dashboard m-3 p-3">
+      <div className="top-banner ">
+          <div className="xyauto text-center">
+            <h3 className="big-txt text-light mt-5">Create Product</h3>
+            <p className="text-secondary">Home / Create Product</p>
+          </div>
+        </div>
+      <div className="container-fluid dashboard m-3 px-5">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
-            <h1>Create Product</h1>
+          <div className="col-md-6 px-5 mx-auto" >
+            <h3 className="fw-bold mb-4 ">Create Product</h3>
             <div className="m-1 w-75">
               <Select
                 bordered={false}
                 placeholder="Select a category"
                 size="large"
                 showSearch
-                className="form-select mb-3"
+                className="form-select mb-3 rounded-0 text-14 py-2"
                 onChange={(value) => {
                   setCategory(value);
                 }}
@@ -89,7 +95,7 @@ const CreateProduct = () => {
                 ))}
               </Select>
               <div className="mb-3">
-                <label className="btn btn-outline-secondary col-md-12">
+                <label className="btn rounded-0 btn-outline-secondary py-3 col-md-12">
                   {photo ? photo.name : "Upload Photo"}
                   <input
                     type="file"
@@ -117,7 +123,7 @@ const CreateProduct = () => {
                   type="text"
                   value={name}
                   placeholder="write a name"
-                  className="form-control"
+                  className="form-control rounded-0 text-14 py-2"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
@@ -126,7 +132,7 @@ const CreateProduct = () => {
                   type="text"
                   value={description}
                   placeholder="write a description"
-                  className="form-control"
+                  className="form-control rounded-0  text-14 py-2"
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
@@ -135,8 +141,8 @@ const CreateProduct = () => {
                 <input
                   type="number"
                   value={price}
-                  placeholder="write a Price"
-                  className="form-control"
+                  placeholder="write a Price" 
+                  className="form-control  rounded-0 text-14 py-2"
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
@@ -145,7 +151,7 @@ const CreateProduct = () => {
                   type="number"
                   value={quantity}
                   placeholder="write a quantity"
-                  className="form-control"
+                  className="form-control rounded-0 text-14 py-2"
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
@@ -155,7 +161,7 @@ const CreateProduct = () => {
                   placeholder="Select Shipping "
                   size="large"
                   showSearch
-                  className="form-select mb-3"
+                  className="form-select mb-3 rounded-0 text-14"
                   onChange={(value) => {
                     setShipping(value);
                   }}
@@ -165,7 +171,7 @@ const CreateProduct = () => {
                 </Select>
               </div>
               <div className="mb-3">
-                <button className="btn btn-primary" onClick={handleCreate}>
+                <button className="btn btn-info py-2 rounded-0 w-100" onClick={handleCreate}>
                   CREATE PRODUCT
                 </button>
               </div>
