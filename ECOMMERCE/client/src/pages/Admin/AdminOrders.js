@@ -43,24 +43,22 @@ const AdminOrders = () => {
     }
   };
   return (
-
     <Layout title={"All Orders Data"}>
-       <div className="top-banner ">
-          <div className="xyauto text-center">
-            <h3 className="big-txt text-light mt-5">Admin Orders</h3>
-            <p className="text-secondary">Home / Orders</p>
-          </div>
+      <div className="top-banner ">
+        <div className="xyauto text-center">
+          <h3 className="big-txt text-light mt-5">Admin Orders</h3>
+          <p className="text-secondary">Home / Orders</p>
         </div>
+      </div>
       <div className="row dashboard px-5">
         <div className="col-md-3">
           <AdminMenu />
         </div>
         <div className="col-md-9">
-     
           {orders?.map((o, i) => {
             return (
               <div className="shadow-lg  px-5 pt-5 mb-5">
-                     <h5 className="mb-3">Order's info Table </h5>
+                <h5 className="mb-3">Order's info Table </h5>
                 <table className="table border">
                   <thead className="bg-dark text-light">
                     <tr>
@@ -89,15 +87,24 @@ const AdminOrders = () => {
                         </Select>
                       </td>
                       <td className="text-14 mt-2">{o?.buyer?.name}</td>
-                      <td className="text-14 mt-2">{moment(o?.createAt).fromNow()}</td>
-                      <td className="text-14 mt-2">{o?.payment.success ? "Success" : "Failed"}</td>
-                      <td className="text-14 mt-2 mx-auto">{o?.products?.length}</td>
+                      <td className="text-14 mt-2">
+                        {moment(o?.createAt).fromNow()}
+                      </td>
+                      <td className="text-14 mt-2">
+                        {o?.payment.success ? "Success" : "Failed"}
+                      </td>
+                      <td className="text-14 mt-2 mx-auto">
+                        {o?.products?.length}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
                 <div className="container pb-5">
                   {o?.products?.map((p, i) => (
-                    <div className="row mb-2 p-3 card flex-row rounded-0" key={p._id}>
+                    <div
+                      className="row mb-2 p-3 card flex-row rounded-0"
+                      key={p._id}
+                    >
                       <div className="col-md-3">
                         <img
                           src={`/api/v1/product/product-photo/${p._id}`}
@@ -108,17 +115,18 @@ const AdminOrders = () => {
                         />
                       </div>
                       <div className="col-md-8 my-auto">
-                        <p  className="text-14 pb-0">{p.name}</p>
-                        <p className="text-14 py-0">{p.description.substring(0, 30)}</p>
-                        <p >Price : {p.price}</p>
-   
+                        <p className="text-14 pb-0">{p.name}</p>
+                        <p className="text-14 py-0">
+                          {p.description.substring(0, 30)}
+                        </p>
+                        <p>Price : {p.price}</p>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Layout>
