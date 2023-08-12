@@ -121,9 +121,9 @@ export default function Navigation() {
             {/* <div className="m-auto  ">
             <img src={search} alt="this is an icon" />
           </div> */}
-            <div className="m-auto ">
+            {/* <div className="m-auto ">
               <FavoriteBorderOutlinedIcon className="fs-2 scale13 text-dark pt-1 " />
-            </div>
+            </div> */}
             <div className="m-auto">
               <Badge className="mt-1" count={cart?.length} showZero>
                 <Link to="/cart" className="nav-link text-18 my-auto">
@@ -295,32 +295,6 @@ export default function Navigation() {
                     <NavLink to="/shop" className="nav-link ">
                       Shop
                     </NavLink>
-                  </li>
-                  <li className="nav-item dropdown">
-                    <Link
-                      className="nav-link dropdown-toggle"
-                      to={"/categories"}
-                      data-bs-toggle="dropdown"
-                    >
-                      Categories
-                    </Link>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link className="dropdown-item" to={"/categories"}>
-                          All Categories
-                        </Link>
-                      </li>
-                      {categories?.map((c) => (
-                        <li>
-                          <Link
-                            className="dropdown-item"
-                            to={`/category/${c.slug}`}
-                          >
-                            {c.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
                   </li>
 
                   {!auth?.user ? (

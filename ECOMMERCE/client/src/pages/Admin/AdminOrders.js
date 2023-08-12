@@ -43,6 +43,7 @@ const AdminOrders = () => {
     }
   };
   return (
+
     <Layout title={"All Orders Data"}>
        <div className="top-banner ">
           <div className="xyauto text-center">
@@ -110,13 +111,14 @@ const AdminOrders = () => {
                         <p  className="text-14 pb-0">{p.name}</p>
                         <p className="text-14 py-0">{p.description.substring(0, 30)}</p>
                         <p >Price : {p.price}</p>
+   
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </Layout>

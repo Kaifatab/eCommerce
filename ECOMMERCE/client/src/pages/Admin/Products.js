@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
+import ".././style.css";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 const Products = () => {
@@ -47,12 +48,14 @@ const Products = () => {
                   <div className="card m-2 rounded-0 " style={{ width: "18rem" }}>
                     <img
                       src={`/api/v1/product/product-photo/${p._id}`}
+
                       className="card-img-top border-bottom"
                       alt={p.name}
                     />
                     <div className="card-body">
                       <h6 className="card-title">{p.name}</h6>
                       <p className=" text-14">{p.description.substring(0, 60)}...</p>
+
                     </div>
                   </div>
                 </Link>
