@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../utils/axios";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
+
 const { Option } = Select;
 
 const CreateProduct = () => {
@@ -17,7 +19,9 @@ const CreateProduct = () => {
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
-
+  // const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState(null);
+  console.log(JSON.parse(localStorage.getItem("auth")));
   //get all category
   const getAllCategory = async () => {
     try {
@@ -32,7 +36,11 @@ const CreateProduct = () => {
   };
 
   useEffect(() => {
-    getAllCategory();
+    // getAllCategory();
+    // console.log(auth);
+    // const authObject =
+    setAuth(JSON.parse(localStorage.getItem("auth")));
+    // console.log("auth", auth);
   }, []);
 
   //create product function
@@ -48,7 +56,12 @@ const CreateProduct = () => {
       productData.append("category", category);
       const { data } = axios.post(
         "/api/v1/product/create-product",
-        productData
+        productData,
+        {
+          headers: {
+            Authorization: auth.token,
+          },
+        }
       );
       if (data?.success) {
         toast.error(data?.message);
@@ -65,17 +78,17 @@ const CreateProduct = () => {
   return (
     <Layout>
       <div className="top-banner ">
-          <div className="xyauto text-center">
-            <h3 className="big-txt text-light mt-5">Create Product</h3>
-            <p className="text-secondary">Home / Create Product</p>
-          </div>
+        <div className="xyauto text-center">
+          <h3 className="big-txt text-light mt-5">Create Product</h3>
+          <p className="text-secondary">Home / Create Product</p>
         </div>
+      </div>
       <div className="container-fluid dashboard m-3 px-5">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-6 px-5 mx-auto" >
+          <div className="col-md-6 px-5 mx-auto">
             <h3 className="fw-bold mb-4 ">Create Product</h3>
             <div className="m-1 w-75">
               <Select
@@ -141,7 +154,7 @@ const CreateProduct = () => {
                 <input
                   type="number"
                   value={price}
-                  placeholder="write a Price" 
+                  placeholder="write a Price"
                   className="form-control  rounded-0 text-14 py-2"
                   onChange={(e) => setPrice(e.target.value)}
                 />
@@ -171,7 +184,10 @@ const CreateProduct = () => {
                 </Select>
               </div>
               <div className="mb-3">
-                <button className="btn btn-info py-2 rounded-0 w-100" onClick={handleCreate}>
+                <button
+                  className="btn btn-info py-2 rounded-0 w-100"
+                  onClick={handleCreate}
+                >
                   CREATE PRODUCT
                 </button>
               </div>

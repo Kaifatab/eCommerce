@@ -4,18 +4,19 @@ import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "./../utils/axios";
 import toast from "react-hot-toast";
-import './style.css'
+import "./style.css";
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
-  const [cart, setCart] = useCart();
+  const [cart, setCart] = useCart([]);
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-console.log(cart)
+  console.log(cart);
   //total price
   const totalPrice = () => {
     try {
@@ -46,32 +47,48 @@ console.log(cart)
   };
 
   //get payment gateway token
-  const getToken = async () => {
-    try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
-      setClientToken(data?.clientToken);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getToken();
-  }, [auth?.token]);
+  // const getToken = async () => {
+  //   try {
+  //     const { data } = await axios.get("/api/v1/product/braintree/token");
+  //     setClientToken(data?.clientToken);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getToken();
+  // }, [auth?.token]);
 
   //handle payments
   const handlePayment = async () => {
     try {
       setLoading(true);
-      const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("/api/v1/product/braintree/payment", {
-        nonce,
-        cart,
-      });
+      const orderResponse = await axios.post(
+        "/api/v1/product/create-order",
+        {
+          cart: cart.map((e) => {
+            return { ...e, photo: null };
+          }),
+        },
+        {
+          headers: {
+            Authorization: auth?.token,
+          },
+        }
+      );
+      console.log("order response", orderResponse.data);
+      // const { nonce } = await instance.requestPaymentMethod();
+      // const { data } = await axios.post("/api/v1/product/braintree/payment", {
+      //   nonce,
+      //   cart,
+      // });
+
       setLoading(false);
       localStorage.removeItem("cart");
+
       setCart([]);
       navigate("/dashboard/user/orders");
-      toast.success("Payment Completed Successfully ");
+      // toast?.success("Payment Completed Successfully ");
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -80,14 +97,13 @@ console.log(cart)
 
   return (
     <Layout>
-       <div className="top-banner ">
-          <div className="xyauto text-center">
-            <h3 className="big-txt text-light mt-5">Checkout</h3>
-            <p className="text-secondary">Home / Checkout</p>
-          </div>
+      <div className="top-banner ">
+        <div className="xyauto text-center">
+          <h3 className="big-txt text-light mt-5">Checkout</h3>
+          <p className="text-secondary">Home / Checkout</p>
         </div>
+      </div>
       <div className="container">
-     
         <div className="row">
           <div className="col-md-12">
             <h3 className="text-center text-info p-2 pt-5 mb-1">
@@ -105,19 +121,23 @@ console.log(cart)
         <div className="row pt-5">
           <div className="col-md-8 ">
             {cart?.map((p) => (
-              <div className="row mb-4 p-3 border border-1 border-secondry rounded-1 flex-row" key={p._id}>
+              <div
+                className="row mb-4 p-3 border border-1 border-secondry rounded-1 flex-row"
+                key={p._id}
+              >
                 <div className="col-md-4 border-end ">
                   <img
                     src={`/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                     width="100px"
-                   
                   />
                 </div>
                 <div className="col-md-8 my-auto ps-4">
                   <p className="fs-4 pb-0 mb-0">{p.name}</p>
-                  <p className="text-14 text-secondary pt-1">{p.description.substring(0, 30)}</p>
+                  <p className="text-14 text-secondary pt-1">
+                    {p.description.substring(0, 30)}
+                  </p>
                   <p className="fs-5 text-dark">Price : ${p.price}</p>
                   <button
                     className="btn btn-outline-danger rounded-1 py-1  "
@@ -131,14 +151,31 @@ console.log(cart)
           </div>
           <div className="col-md-4 text-center px-4">
             <h5 className="py-3 bg-dark text-light mb-3 ">Cart Summary</h5>
-            <p className="text-secondary border-bottom pb-3 text-16">Total | Checkout | Payment</p>
-           
+            <p className="text-secondary border-bottom pb-3 text-16">
+              Total | Checkout | Payment
+            </p>
+
             <h4>Total : {totalPrice()} </h4>
             {auth?.user?.address ? (
               <>
                 <div className="mb-3">
-                  <h5 className="py-3 bg-dark text-light mt-5">Current Address</h5>
-                  <h5 className="text-secondary my-4 text-16">Email : {auth?.user?.address}</h5>
+                  <button
+                    className="btn btn-outline-info rounded-1 px-4 mb-5"
+                    onClick={() => {
+                      handlePayment();
+                    }}
+                  >
+                    Make Payment
+                  </button>
+                </div>
+
+                <div className="mb-3">
+                  <h5 className="py-3 bg-dark text-light mt-5">
+                    Current Address
+                  </h5>
+                  <h5 className="text-secondary my-4 text-16">
+                    Email : {auth?.user?.address}
+                  </h5>
                   <button
                     className="btn btn-outline-info rounded-1 px-4 mb-5"
                     onClick={() => navigate("/dashboard/user/profile")}
