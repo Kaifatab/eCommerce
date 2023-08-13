@@ -23,12 +23,12 @@ const Orders = () => {
 
   return (
     <Layout title={"Your Orders"}>
-         <div className="top-banner ">
-          <div className="xyauto text-center">
-            <h3 className="big-txt text-light mt-5">Orders</h3>
-            <p className="text-secondary">Home / Dashboard / Orders</p>
-          </div>
+      <div className="top-banner ">
+        <div className="xyauto text-center">
+          <h3 className="big-txt text-light mt-5">Orders</h3>
+          <p className="text-secondary">Home / Dashboard / Orders</p>
         </div>
+      </div>
       <div className="container-flui p-3 m-3 dashboard">
         <div className="row">
           <div className="col-md-3">
@@ -56,7 +56,7 @@ const Orders = () => {
                         <td>{o?.status}</td>
                         <td>{o?.buyer?.name}</td>
                         <td>{moment(o?.createAt).fromNow()}</td>
-                        <td>{o?.payment.success ? "Success" : "Failed"}</td>
+                        <td>{o?.payment}</td>
                         <td>{o?.products?.length}</td>
                       </tr>
                     </tbody>

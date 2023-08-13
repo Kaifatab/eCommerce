@@ -2,10 +2,13 @@ import userModel from "../models/userModel.js";
 import orderModel from "../models/orderModel.js";
 import JWT from "jsonwebtoken";
 import { comparePassword, hashPassword } from "./../helpers/authHelper.js";
+import productModel from "../models/productModel.js";
+import axios from "axios";
 
 export const registerController = async (req, res) => {
   try {
-    const { name, email, password, phone, address, answer } = req.body;
+    const { name, email, password, phone, address, answer, account_no } =
+      req.body;
     //validations
     if (!name) {
       return res.send({ error: "Name is Required" });
@@ -45,6 +48,7 @@ export const registerController = async (req, res) => {
       address,
       password: hashedPassword,
       answer,
+      account_no,
     }).save();
 
     res.status(201).send({
@@ -225,6 +229,7 @@ export const getAllOrdersController = async (req, res) => {
       .populate("products", "-photo")
       .populate("buyer", "name")
       .sort({ createdAt: "-1" });
+    // console.log(orders);
     res.json(orders);
   } catch (error) {
     console.log(error);
@@ -246,6 +251,76 @@ export const orderStatusController = async (req, res) => {
       { status },
       { new: true }
     );
+    // console.log("orders", orders);
+
+    const { products } = orders;
+    // const full_products = await productModel.find(
+    //   { _id: products },
+    //   {
+    //     supplier: 1,
+    //     price: 1,
+    //   }
+    // );
+
+    // // console.log("products", full_products);
+    // console.log(full_products.map((e) => e.supplier));
+    // const suppliers = await userModel.find({
+    //   _id: full_products.map((e) => e.supplier),
+    // });
+    // console.log(suppliers);
+
+    let result = await productModel.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "supplier",
+          foreignField: "_id",
+          as: "supplier",
+        },
+      },
+      {
+        $unwind: {
+          path: "$supplier",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $project: {
+          photo: 0,
+        },
+      },
+      {
+        $match: {
+          _id: {
+            $in: products,
+          },
+        },
+      },
+    ]);
+
+    result = result.map((e) => {
+      return {
+        price: e.price,
+        supplier: e.supplier.account_no,
+      };
+    });
+    if (status == "deliverd") {
+      result.forEach((e) => {
+        axios
+          .post("http://localhost:5000/make-payment", {
+            from: "12345678",
+            to: e.supplier,
+            amount: e.price * 0.2,
+          })
+          .then((res) => {
+            console.log("Transfer completed");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    }
+
     res.json(orders);
   } catch (error) {
     console.log(error);

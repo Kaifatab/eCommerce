@@ -7,6 +7,8 @@ import slugify from "slugify";
 
 import braintree from "braintree";
 import dotenv from "dotenv";
+import axios from "axios";
+import userModel from "../models/userModel.js";
 
 dotenv.config();
 
@@ -23,7 +25,11 @@ export const createProductController = async (req, res) => {
     const { name, description, price, category, quantity, shipping } =
       req.fields;
     const { photo } = req.files;
+    // const
     //alidation
+    // console.log("user", req.user);
+    // res.end();
+    // return;
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
@@ -41,7 +47,11 @@ export const createProductController = async (req, res) => {
           .send({ error: "photo is Required and should be less then 1mb" });
     }
 
-    const products = new productModel({ ...req.fields, slug: slugify(name) });
+    const products = new productModel({
+      ...req.fields,
+      slug: slugify(name),
+      supplier: req.user._id,
+    });
     if (photo) {
       products.photo.data = fs.readFileSync(photo.path);
       products.photo.contentType = photo.type;
@@ -325,6 +335,42 @@ export const productCategoryController = async (req, res) => {
       message: "Error While Getting products",
     });
   }
+};
+
+export const createOrderController = async (req, res, next) => {
+  const { cart } = req.body;
+  // const {}
+  const orders = await orderModel.create({
+    products: cart.map((e) => e._id),
+    buyer: req.user._id,
+  });
+  // res.json()
+  const amount = cart.reduce((acc, e) => acc + e?.price, 0);
+  // console.log(amount);
+  // console.log(cart);
+  // console.log(req?.user);
+  const user = await userModel.findById(req.user._id);
+  // console.log(user);
+  const paymentResponse = await axios.post(
+    "http://localhost:5000/make-payment",
+    {
+      from: user.account_no,
+      to: "12345678",
+      amount,
+    }
+  );
+
+  console.log(paymentResponse.data);
+  if (paymentResponse.data.status == "successful") {
+    const updatedOrder = await orderModel.findByIdAndUpdate(orders._id, {
+      payment: "Successful",
+    });
+  }
+  // console.log(cart);
+
+  res.json({
+    result: "order placed",
+  });
 };
 
 //payment gateway api
