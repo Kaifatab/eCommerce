@@ -53,4 +53,19 @@ bankController.make_payment = async (req, res, next) => {
   });
 };
 
+bankController.get_balance = async (req, res, next) => {
+  const { acc_number } = req.headers;
+  const acc = await account.findOne(
+    {
+      acc_number,
+    },
+    {
+      balance: 1,
+    }
+  );
+  res.json({
+    balance: acc.balance,
+  });
+};
+
 module.exports = bankController;

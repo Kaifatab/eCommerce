@@ -30,6 +30,7 @@ app.use(morgan("dev"));
 
 app.post("/create-account", bankController.createAccount);
 app.post("/make-payment", bankController.make_payment);
+app.get("/get-balance", bankController.get_balance);
 
 //rest api
 app.get("/", (req, res) => {

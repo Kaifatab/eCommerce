@@ -18,6 +18,7 @@ const CreateProduct = () => {
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
+  const [supplier, setSupplier] = useState("");
   const [photo, setPhoto] = useState("");
   // const [auth, setAuth] = useState(null);
   const [auth, setAuth] = useState(null);
@@ -182,6 +183,15 @@ const CreateProduct = () => {
                   <Option value="0">No</Option>
                   <Option value="1">Yes</Option>
                 </Select>
+              </div>
+              <div className="mb-3">
+                <input
+                  type="string"
+                  value={quantity}
+                  placeholder="write a quantity"
+                  className="form-control rounded-0 text-14 py-2"
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
               </div>
               <div className="mb-3">
                 <button
