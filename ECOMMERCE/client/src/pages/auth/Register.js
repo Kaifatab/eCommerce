@@ -13,6 +13,8 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [answer, setAnswer] = useState("");
+  const [accNumber, setAccNumber] = useState("");
+
   const navigate = useNavigate();
 
   // form function
@@ -27,6 +29,7 @@ const Register = () => {
         phone,
         address,
         answer,
+        account_no: accNumber,
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
@@ -124,12 +127,13 @@ const Register = () => {
                 required
               />
             </div>
+
             <div className="mb-3">
               <input
                 type="text"
                 className="form-control w-100  text-14 rounded-0 text-secondary"
                 id="exampleInputEmail1"
-                placeholder="Enter a secret key"
+                placeholder="Bank Account Number"
                 required
               />
             </div>

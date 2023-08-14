@@ -112,9 +112,9 @@ const HomePage = () => {
   return (
     <Layout title={"ALl Products - Best offers "}>
       <div className="top-banner ">
-        <div className="xyauto text-center">
+        <div className="container my-auto text-start">
           <p className="text-white">Home / Products</p>
-          <h3 className="big-txt text-black mt-5">Products</h3>
+          <h3 className="big-txt text-white mt-5">Products</h3>
         </div>
       </div>
       <div className="container-fluid row mt-2 px-5 d-flex">

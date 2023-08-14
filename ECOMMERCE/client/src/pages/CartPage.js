@@ -98,9 +98,9 @@ const CartPage = () => {
   return (
     <Layout>
       <div className="top-banner ">
-        <div className="xyauto text-center">
-          <h3 className="big-txt text-light mt-5">Checkout</h3>
+        <div className="container my-auto text-start">
           <p className="text-secondary">Home / Checkout</p>
+          <h3 className="big-txt text-white mt-5">Checkout</h3>
         </div>
       </div>
       <div className="container">
