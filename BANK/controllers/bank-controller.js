@@ -6,7 +6,7 @@ const bankController = {};
 bankController.createAccount = async (req, res, next) => {
   const { pin } = req.body;
   const hashed_pin = await hash_pin(pin);
-  console.log(hashed_pin);
+  // console.log(hashed_pin);
   const created_account = await account.create({
     ...req.body,
     pin: hashed_pin,
@@ -17,7 +17,7 @@ bankController.createAccount = async (req, res, next) => {
 bankController.make_payment = async (req, res, next) => {
   const { from, to, amount } = req.body;
   //   console.log("hello");
-  console.log(from);
+  // console.log(from);
 
   const from_acc = await account.findOne({
     acc_number: from,

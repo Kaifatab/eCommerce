@@ -136,7 +136,7 @@ const Profile = () => {
                     placeholder="Enter Your Address"
                   />
                 </div>
-                <div className="mb-3">Bank Balance: ${balance}</div>
+                {/* <div className="mb-3">Bank Balance: ${balance}</div> */}
 
                 <button
                   type="submit"

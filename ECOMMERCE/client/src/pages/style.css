@@ -1,89 +1,86 @@
-.text-16{
-    font-size: 16px;
+.text-16 {
+  font-size: 16px;
 }
-.bg-theme-gray{
-    background-color: rgba(0, 0, 0, 0.449);
+.bg-theme-gray {
+  background-color: rgba(0, 0, 0, 0.449);
 }
-.text-gray{
-    color: #ffffff80;
+.text-gray {
+  color: #ffffff80;
 }
-.cate-hover:hover{
-    font-weight: 600;
-    color: black;
+.cate-hover:hover {
+  font-weight: 600;
+  color: black;
 }
-hr{
-    border: 2px solid rgb(0, 0, 0,0);
-    width: 90%;
-    margin: auto;
-    z-index: 1;
-   
+hr {
+  border: 2px solid rgb(0, 0, 0, 0);
+  width: 90%;
+  margin: auto;
+  z-index: 1;
 }
-.ps-r{
-    position: relative;
+.ps-r {
+  position: relative;
 }
-.ps-a{
-    position: absolute;
-}
-
-.-mb{
-    margin-bottom: -20px;
-    z-index: 2;
-}
-.bg-wh{
-    background-color: rgb(255, 255, 255);
+.ps-a {
+  position: absolute;
 }
 
-.bg-gray{
-    background-color: #343a40;
+.-mb {
+  margin-bottom: -20px;
+  z-index: 2;
 }
-.btn-gray{
-    background-color: #343a40;
-}
-.text-20{
-    font-size: 20px;
-}
-.text-12{
-    font-size: 12px;
-}
-.text-15{
-    font-size: 15px;
-}
-.text-16{
-    font-size: 16px;
-}
-.text-18{
-    font-size: 18px;
-}
-.text-theme-gray{
-    color: #666666;
+.bg-wh {
+  background-color: rgb(255, 255, 255);
 }
 
-.rounded-iconive{
-    border-radius: 8px;
+.bg-gray {
+  background-color: #343a40;
 }
-.card-main{
-    width: 23% !important;
+.btn-gray {
+  background-color: #343a40;
 }
-.mt-5p{
-    margin-top: 4.4%;
+.text-20 {
+  font-size: 20px;
 }
-.text-14{
-    font-size: 14;
+.text-12 {
+  font-size: 12px;
 }
-.text-white{
-    color: #ffffff !important;
+.text-15 {
+  font-size: 15px;
+}
+.text-16 {
+  font-size: 16px;
+}
+.text-18 {
+  font-size: 18px;
+}
+.text-theme-gray {
+  color: #666666;
 }
 
-.top-banner{
-   
-    background-image: url("../../public/images/login/moonbg.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height:430px;
-    display: flex;
-    margin-top: -40px;
-    
+.rounded-iconive {
+  border-radius: 8px;
 }
-.xyauto{
-    margin: auto auto;
+.card-main {
+  width: 23% !important;
+}
+.mt-5p {
+  margin-top: 4.4%;
+}
+.text-14 {
+  font-size: 14;
+}
+.text-white {
+  color: #ffffff !important;
+}
+
+.top-banner {
+  background-image: url("../../src/pages/LandingPage/image/topper5.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 430px;
+  display: flex;
+  margin-top: -40px;
+}
+.xyauto {
+  margin: auto auto;
 }

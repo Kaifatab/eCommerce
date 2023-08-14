@@ -37,7 +37,7 @@ const CreateProduct = () => {
   };
 
   useEffect(() => {
-    // getAllCategory();
+    getAllCategory();
     // console.log(auth);
     // const authObject =
     setAuth(JSON.parse(localStorage.getItem("auth")));
@@ -184,15 +184,7 @@ const CreateProduct = () => {
                   <Option value="1">Yes</Option>
                 </Select>
               </div>
-              <div className="mb-3">
-                <input
-                  type="string"
-                  value={quantity}
-                  placeholder="write a quantity"
-                  className="form-control rounded-0 text-14 py-2"
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-              </div>
+
               <div className="mb-3">
                 <button
                   className="btn btn-info py-2 rounded-0 w-100"

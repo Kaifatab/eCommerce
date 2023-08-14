@@ -14,7 +14,7 @@ const AdminOrders = () => {
     "Not Process",
     "Processing",
     "Shipped",
-    "deliverd",
+    "delivered",
     "cancel",
   ]);
   const [changeStatus, setCHangeStatus] = useState("");
@@ -27,7 +27,7 @@ const AdminOrders = () => {
           Authorization: auth?.token,
         },
       });
-      // const pay_response = await axios_bank.post("/make-payment");
+      //const pay_response = await axios_bank.post("/make-payment");
       // console.log("data", data);
       setOrders(data);
     } catch (error) {

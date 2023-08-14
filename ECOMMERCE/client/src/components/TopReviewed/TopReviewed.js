@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "react-router-dom";
 import "./TopReviewed.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -21,23 +21,23 @@ export default function TopReviewed() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-   getAllProducts();
+    getAllProducts();
   }, []);
 
-    //get products
-    const getAllProducts = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
-        setLoading(false);
-        setProducts(data.products);
-      } catch (error) {
-        setLoading(false);
-        console.log(error);
-      }
-    };
-  
-  const navigation=useNavigate()
+  //get products
+  const getAllProducts = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      setLoading(false);
+      setProducts(data.products);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+
+  const navigation = useNavigate();
   const cards = [
     {
       id: 1,
@@ -64,13 +64,13 @@ export default function TopReviewed() {
             top Reviewed products
           </h2>
           <p className=" text-secondary text-16 	">
-            Discover your unique look, Browse our selection of wigs for him and
-            her
+            Discover your unique style, Browse our selection of watches both for
+            men and women
           </p>
         </div>
 
         <div className="d-flex w-100 mt-5 flex-wrap gap-3 mx-auto justify-content-between ">
-          {products.slice(0,4)?.map((card, index) => (
+          {products.slice(2, 6)?.map((card, index) => (
             <div key={index} className="card-main w-25 rounded-0 ">
               <div className="img-card position-relative border">
                 <img
@@ -78,31 +78,23 @@ export default function TopReviewed() {
                   src={`/api/v1/product/product-photo/${card._id}`}
                   alt="This  is an  picture"
                 />
-                  <span    className="end-0 bottom-0 position-absolute p-1 pt-2">
-                <img
-               
-                  src={review}
-                  width={"60"}
-                  alt="This  is an  picture"
-                />
+                <span className="end-0 bottom-0 position-absolute p-1 pt-2">
+                  <img src={review} width={"60"} alt="This  is an  picture" />
                 </span>
-           
               </div>
               <div className="text-start p-3">
-                <p className=" fw-bold text-16 text-dark">
-                {card.name}
-                </p>
+                <p className=" fw-bold text-16 text-dark">{card.name}</p>
                 <p className="m-0 py-0 text-12 text-dark">
-                {card.description.substring(0, 35)}...
+                  {card.description.substring(0, 35)}...
                 </p>
-                <div className="d-flex justify-content-between mt-2">
+                {/* <div className="d-flex justify-content-between mt-2">
                   <button className="btn px-0 mt-1">
                     <FavoriteBorderIcon className="fs-3 fw-normal" />
                   </button>
-                  <p className="text-20 fw-bold text-dark my-auto pt-1">$ {card.price}</p>
-                  <button
-                   
-                  className="btn ps-2 my-auto">
+                  <p className="text-20 fw-bold text-dark my-auto pt-1">
+                    $ {card.price}
+                  </p>
+                  <button className="btn ps-2 my-auto">
                     {" "}
                     <img
                       src={cardicon1}
@@ -110,19 +102,20 @@ export default function TopReviewed() {
                       alt="this is an icon"
                     />
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
         </div>
         <div className="my-5 d-flex flex-column text-center">
           <button
-           onClick={
-            ()=>{
-              navigation('/shop')
-            }
-          }
-          className="btn text-dark text-18">View Shop</button>
+            onClick={() => {
+              navigation("/shop");
+            }}
+            className="btn text-dark text-18"
+          >
+            View Shop
+          </button>
           <KeyboardArrowDownIcon className="text-dark m-auto mb-md-5" />
         </div>
       </div>
