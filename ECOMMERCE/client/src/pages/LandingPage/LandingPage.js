@@ -1,19 +1,19 @@
 import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import Subscription  from "../../components/Subscription/Subscription";
+import Subscription from "../../components/Subscription/Subscription";
 import TopReviewed from "../../components/TopReviewed/TopReviewed";
 import TopSelling from "../../components/TopSelling/TopSelling";
-import banner1 from "./image/banner1.jpg";
+import banner4 from "./image/banner4.jpg";
 import banner2 from "./image/banner2.jpg";
+import banner3 from "./image/banner3.jpg";
 import banner11 from "./image/sub1.jpg";
 import banner22 from "./image/sub2.jpg";
 import "./LandingPage.css";
 
 export default function LandingPage() {
-  const navigation=useNavigate()
+  const navigation = useNavigate();
   return (
     <>
-   
       {/* carosol componant */}
       <div
         id="carouselExampleCaptions"
@@ -44,21 +44,20 @@ export default function LandingPage() {
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src={banner1} class="d-block w-100" alt="..." />
+            <img src={banner2} class="d-block w-100" alt="..." />
             <div class="position-absolute top30 left30">
               <div className="my-auto">
                 <h3 className="text-light fw-lighter">UP TO 15% DISCOUNT</h3>
                 <h1 className="text54 text-light fwbolder">
-                  Checkout The Best <br /> Fashion Style
+                  World-class watch <br /> made for you
                 </h1>
                 <a href="/shop">
-                  <button 
-                   onClick={
-                    ()=>{
-                      navigation('/shop')
-                    }
-                  }
-                  className="btn btn-outline-light px-5 py-2">
+                  <button
+                    onClick={() => {
+                      navigation("/shop");
+                    }}
+                    className="btn btn-outline-light px-5 py-2"
+                  >
                     SHOP NOW
                   </button>
                 </a>
@@ -66,41 +65,43 @@ export default function LandingPage() {
             </div>
           </div>
           <div class="carousel-item">
-            <img src={banner2} class="d-block w-100" alt="..." />
+            <img src={banner4} class="d-block w-100" alt="..." />
             <div class="position-absolute top30 left30">
               <div className="my-auto">
                 <h3 className="text-dark fwlight">UP TO 15% DISCOUNT</h3>
                 <h1 className="text54 text-dark fwbolder">
-                  Checkout The Best <br /> Fashion Style
+                  Crafted with love <br /> and care
                 </h1>
                 <a href="/shop">
-                  <button 
-                  onClick={
-                    ()=>{
-                      navigation('/shop')
-                    }
-                  }
-                  className="btn btn-dark px-5 py-2">SHOP NOW</button>
+                  <button
+                    onClick={() => {
+                      navigation("/shop");
+                    }}
+                    className="btn btn-dark px-5 py-2"
+                  >
+                    SHOP NOW
+                  </button>
                 </a>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img src={banner2} class="d-block w-100" alt="..." />
+            <img src={banner3} class="d-block w-100" alt="..." />
             <div class="position-absolute top30 left30">
               <div className="my-auto">
                 <h3 className="text-dark fwlight">UP TO 15% DISCOUNT</h3>
                 <h1 className="text54 text-dark fwbolder">
-                  Checkout The Best <br /> Fashion Style
+                  Beautiful designs at <br /> it's best
                 </h1>
                 <a href="/shop">
                   <button
-                   onClick={
-                    ()=>{
-                      navigation('/shop')
-                    }
-                  }
-                  className="btn btn-dark px-5 py-2">SHOP NOW</button>
+                    onClick={() => {
+                      navigation("/shop");
+                    }}
+                    className="btn btn-dark px-5 py-2"
+                  >
+                    SHOP NOW
+                  </button>
                 </a>
               </div>
             </div>
@@ -129,22 +130,28 @@ export default function LandingPage() {
       {/* catagory section */}
       <div className="my-5 d-flex container mb5 gap-4">
         <div className="w-50 bg-sub1 d-flex">
-          <div className="w-60 p-5 ms-auto text-center">
-            <h2>CLASSICAL SUITS</h2>
-            <p className="text-secondary">LARGEST COLLECTION</p>
+          <div className="w-60 p-5 ms-auto text-top">
+            <h2 className="text-white">ELEGANT SMARTWATCH</h2>
+            <p className="text-white">LATEST DESIGN</p>
           </div>
         </div>
         <div className="w-50 bg-sub2 d-flex">
-          <div className="w-60 p-5 ms-auto text-center">
-            <h2>BEAUTIFUL DRESSES</h2>
-            <p className="text-secondary">NOW IN STORE</p>
+          <div className="w-60 p-5 ms-auto text-top">
+            <h2 className="text-white">CLOCKS AND CHIMES</h2>
+            <p className="text-white">NOW IN STORE</p>
+          </div>
+        </div>
+        <div className="w-50 bg-sub3 d-flex">
+          <div className="w-60 p-5 ms-auto text-top">
+            <h2 className="text-white">CLASSIC WRISTWATCH</h2>
+            <p className="text-white">VINTAGE COLLECTION</p>
           </div>
         </div>
       </div>
-    
-    <TopSelling/>
-    <TopReviewed/>
-    <Subscription/>
+
+      <TopSelling />
+      <TopReviewed />
+      {/* <Subscription /> */}
     </>
   );
 }

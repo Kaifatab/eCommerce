@@ -29,7 +29,7 @@ const router = express.Router();
 router.post(
   "/create-product",
   requireSignIn,
-  isSupplier,
+  isAdmin,
   formidable(),
   createProductController
 );

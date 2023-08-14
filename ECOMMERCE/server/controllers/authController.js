@@ -304,7 +304,7 @@ export const orderStatusController = async (req, res) => {
         supplier: e.supplier.account_no,
       };
     });
-    if (status == "deliverd") {
+    if (status == "delivered") {
       result.forEach((e) => {
         axios
           .post("http://localhost:5000/make-payment", {

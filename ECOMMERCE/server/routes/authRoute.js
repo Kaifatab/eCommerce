@@ -1,4 +1,5 @@
 import express from "express";
+import axios from "axios";
 import {
   registerController,
   loginController,
@@ -10,6 +11,7 @@ import {
   orderStatusController,
 } from "../controllers/authController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import userModel from "../models/userModel.js";
 
 //router object
 const router = express.Router();
@@ -45,6 +47,18 @@ router.get("/orders", requireSignIn, getOrdersController);
 
 //all orders
 router.get("/all-orders", requireSignIn, isAdmin, getAllOrdersController);
+
+router.get("/get-balance", requireSignIn, async (req, res, next) => {
+  const user = await userModel.findById(req.user._id);
+  const acc_number = user.account_no;
+  const response = await axios("http://localhost:5000/get-balance", {
+    headers: {
+      acc_number,
+    },
+  });
+  const { balance } = response.data;
+  res.json({ balance });
+});
 
 // order status update
 router.put(

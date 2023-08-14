@@ -18,6 +18,7 @@ const CreateProduct = () => {
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
+  const [supplier, setSupplier] = useState("");
   const [photo, setPhoto] = useState("");
   // const [auth, setAuth] = useState(null);
   const [auth, setAuth] = useState(null);
@@ -36,7 +37,7 @@ const CreateProduct = () => {
   };
 
   useEffect(() => {
-    // getAllCategory();
+    getAllCategory();
     // console.log(auth);
     // const authObject =
     setAuth(JSON.parse(localStorage.getItem("auth")));
@@ -183,6 +184,7 @@ const CreateProduct = () => {
                   <Option value="1">Yes</Option>
                 </Select>
               </div>
+
               <div className="mb-3">
                 <button
                   className="btn btn-info py-2 rounded-0 w-100"

@@ -39,8 +39,8 @@ const Orders = () => {
             {orders?.map((o, i) => {
               return (
                 <div className="border shadow">
-                  <table className="table">
-                    <thead>
+                  <table className="table border">
+                    <thead className="bg-dark text-light">
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Status</th>
@@ -51,31 +51,38 @@ const Orders = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>{i + 1}</td>
-                        <td>{o?.status}</td>
-                        <td>{o?.buyer?.name}</td>
-                        <td>{moment(o?.createAt).fromNow()}</td>
-                        <td>{o?.payment}</td>
-                        <td>{o?.products?.length}</td>
+                      <tr className=" my-auto">
+                        <td className="text-14 mt-2">{i + 1}</td>
+                        <td className="text-14 mt-2">{o?.status}</td>
+                        <td className="text-14 mt-2">{o?.buyer?.name}</td>
+                        <td className="text-14 mt-2">
+                          {moment(o?.createAt).fromNow()}
+                        </td>
+                        <td className="text-14 mt-2">{o?.payment}</td>
+                        <td className="text-14 mt-2">{o?.products?.length}</td>
                       </tr>
                     </tbody>
                   </table>
-                  <div className="container">
+                  <div className="container pb-5">
                     {o?.products?.map((p, i) => (
-                      <div className="row mb-2 p-3 card flex-row" key={p._id}>
-                        <div className="col-md-4">
+                      <div
+                        className="row mb-2 p-3 card flex-row rounded-0"
+                        key={p._id}
+                      >
+                        <div className="col-md-3">
                           <img
                             src={`/api/v1/product/product-photo/${p._id}`}
-                            className="card-img-top"
+                            className="card-img-top w-100 h-100"
                             alt={p.name}
-                            width="100px"
+                            width=""
                             height={"100px"}
                           />
                         </div>
-                        <div className="col-md-8">
-                          <p>{p.name}</p>
-                          <p>{p.description.substring(0, 30)}</p>
+                        <div className="col-md-8 my-auto">
+                          <p className="text-14 pb-0">{p.name}</p>
+                          <p className="text-14 pb-0">
+                            {p.description.substring(0, 30)}
+                          </p>
                           <p>Price : {p.price}</p>
                         </div>
                       </div>
